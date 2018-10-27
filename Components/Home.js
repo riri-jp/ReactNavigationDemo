@@ -7,6 +7,9 @@ import { Button } from "native-base";
 import styles from "../styles";
 
 class HomeScreen extends Component {
+  static navigationOptions = {
+    header: null
+  };
   render() {
     return (
       <ImageBackground
@@ -23,7 +26,7 @@ class HomeScreen extends Component {
               transparent
               light
               style={styles.buttonStyling}
-              onPress={() => alert("IceCream List")}
+              onPress={() => this.props.navigation.navigate("List")}
             >
               <Text style={styles.buttonTextStyling}>FLAVORS LIST</Text>
             </Button>

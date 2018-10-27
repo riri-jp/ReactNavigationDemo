@@ -17,9 +17,16 @@ import data from "../data";
 import styles from "../styles";
 
 class ListScreen extends React.Component {
+  static navigationOptions = {
+    title: "List"
+  };
   render() {
     let icecreamFlavors = data.map(flavorScoop => (
-      <ListItem onPress={() => alert("IceCream Details")}>
+      <ListItem
+        onPress={() =>
+          this.props.navigation.navigate("Detail", { flavor: flavorScoop })
+        }
+      >
         <Text style={styles.flavorList}>{flavorScoop.flavorName}</Text>
       </ListItem>
     ));
