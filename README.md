@@ -49,9 +49,11 @@ const RootStack = createStackNavigator(
 ```javascript
 <ListItem
   onPress={() =>
-    this.props.navigation.navigate("Detail")
+    this.props.navigation.navigate("Detail", { flavor: flavorScoop })
   }
 >
+  <Text style={styles.flavorList}>{flavorScoop.flavorName}</Text>
+</ListItem>
 ```
 
 5.  Add parameters for Detail Navigation:

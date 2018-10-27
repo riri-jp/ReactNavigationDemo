@@ -20,7 +20,7 @@ class DetailsScreen extends Component {
             <Button
               title="BACK"
               color="#6C788E"
-              onPress={() => alert("Come Baack!")}
+              onPress={() => alert("Come Baaack!")}
             />
           </View>
         </Content>

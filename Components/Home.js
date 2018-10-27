@@ -23,7 +23,7 @@ class HomeScreen extends Component {
               transparent
               light
               style={styles.buttonStyling}
-              onPress={() => alert("IceCream List!")}
+              onPress={() => alert("IceCream List")}
             >
               <Text style={styles.buttonTextStyling}>FLAVORS LIST</Text>
             </Button>
