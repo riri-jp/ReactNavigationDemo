@@ -1,3 +1,5 @@
+https://docs.google.com/presentation/d/13R--TesKM2gdmbTHNXRoIfTLVCnzL2CGjya6D2WPxT4/edit#slide=id.p
+
 1.  Setup:
 
     yarn add react-navigation
