@@ -181,3 +181,52 @@ static navigationOptions = {
   )
 };
 ```
+
+14. Change title when pressing on the button:
+
+```javascript
+static navigationOptions = ({ navigation }) => {
+  return {
+    title: navigation.getParam("name")
+
+<Button
+  transparent
+  light
+  style={styles.buttonStyling}
+  onPress={() => this.props.navigation.setParams({ name: "Lailz" })}
+>
+  <Text style={styles.buttonTextStyling}>Set title name to 'Lailz'</Text>
+</Button>
+```
+
+15. Add a counter to the header:
+
+```javascript
+headerRight: <Button
+  transparent
+  light
+  onPress={navigation.getParam("increaseCount")}
+>
+  <Text style={styles.buttonTextStyling}>ICECREAM!!</Text>
+</Button>;
+
+-------------
+
+constructor(props) {
+  super(props);
+  this.state = {
+    count: 0
+  };
+}
+componentDidMount() {
+  this.props.navigation.setParams({ increaseCount: this._increaseCount });
+}
+
+_increaseCount = () => {
+  this.setState({ count: this.state.count + 1 });
+};
+
+----------------
+
+<Text style={styles.buttonTextStyling}>{this.state.count}</Text>
+```
