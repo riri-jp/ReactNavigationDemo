@@ -7,21 +7,6 @@ import { Button } from "native-base";
 import styles from "../styles";
 
 class HomeScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: navigation.getParam("name"),
-      headerRight: (
-        <Button
-          transparent
-          light
-          onPress={navigation.getParam("increaseCount")}
-        >
-          <Text style={styles.buttonTextStyling}>ICECREAM!!</Text>
-        </Button>
-      )
-    };
-  };
-
   constructor(props) {
     super(props);
     this.state = {
