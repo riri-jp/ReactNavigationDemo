@@ -1,6 +1,12 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  authTitle: {
+    color: "#6C788E",
+    fontSize: 24,
+    marginBottom: 20,
+    borderBottomColor: "#6C788E"
+  },
   container: {
     flex: 1,
     width: "100%",
@@ -11,7 +17,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(100, 40, 60, .4)"
   },
   topStyling: {
-    height: "40%",
+    top: 100,
     alignItems: "center",
     justifyContent: "center"
   },
@@ -30,6 +36,15 @@ const styles = StyleSheet.create({
     height: "60%",
     alignItems: "center",
     justifyContent: "center"
+  },
+  profileContainer: {
+    flex: 1,
+    alignSelf: "stretch",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FCFDFF",
+    paddingRight: 60,
+    paddingLeft: 60
   },
   buttonStyling: {
     justifyContent: "center",

@@ -1,0 +1,1 @@
+export const GET_ICECREAM_LIST = "GET_ICECREAM_LIST";

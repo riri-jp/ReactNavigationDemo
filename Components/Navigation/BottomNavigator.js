@@ -7,13 +7,15 @@ import {
 } from "react-navigation";
 
 import HomeScreen from "../Home";
-import ListScreen from "../IceCreamList";
+import ListScreen from "../List";
 import DetailScreen from "../Detail";
 import ModalScreen from "../Modal";
+import ProfileScreen from "../Profile";
 
 import RootStack from "./StackNavigator";
 
-import data from "../../icecreamData";
+import icecreamData from "../../icecreamData";
+import cakeData from "../../cakeData";
 
 const HomeTab = createStackNavigator(
   {
@@ -22,20 +24,11 @@ const HomeTab = createStackNavigator(
       navigationOptions: {
         header: null
       }
-    },
-    List: {
-      screen: props => <ListScreen {...props} flavorList={data} />
-    },
-    Detail: DetailScreen,
-    Modal: {
-      screen: ModalScreen,
-      mode: "modal"
     }
   },
   {
-    initialRouteName: "Home",
-
     navigationOptions: {
+      tabBarIcon: <Icon name="home" />,
       headerTintColor: "white",
       headerStyle: {
         backgroundColor: "#90d4ed"
@@ -48,12 +41,43 @@ const HomeTab = createStackNavigator(
   }
 );
 
-const ListTab = createStackNavigator(
+const IceCreamTab = createStackNavigator(
   {
     List: {
-      screen: ListScreen,
+      screen: props => <ListScreen {...props} flavorList={icecreamData} />,
       navigationOptions: {
         headerTitle: "IceCream List"
+      }
+    },
+    Detail: {
+      screen: DetailScreen,
+      tabBarVisible: true
+    },
+    Modal: {
+      screen: ModalScreen,
+      mode: "modal"
+    }
+  },
+  {
+    initialRouteName: "List",
+    navigationOptions: {
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "#90d4ed"
+      },
+      headerTextStyle: {
+        fontWeight: "bold"
+      }
+    }
+  }
+);
+
+const CakeTab = createStackNavigator(
+  {
+    List: {
+      screen: props => <ListScreen {...props} flavorList={cakeData} />,
+      navigationOptions: {
+        headerTitle: "Cake List"
       }
     },
     Detail: {
@@ -78,26 +102,50 @@ const ListTab = createStackNavigator(
   }
 );
 
+const ProfileTab = createStackNavigator({
+  Profile: ProfileScreen
+});
+
 const BottomTab = createBottomTabNavigator(
   {
     HomeTab: HomeTab,
-    ListTab: ListTab
+    IceCreamTab: IceCreamTab,
+    CakeTab: CakeTab,
+    ProfileTab: ProfileTab
   },
   {
     initialRouteName: "HomeTab",
-
-    backBehavior: "initialRouteName",
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === "HomeTab") {
+          iconName = "home";
+        } else if (routeName === "IceCreamTab") {
+          iconName = "birthday-cake";
+        } else if (routeName === "CakeTab") {
+          iconName = "certificate";
+        } else if (routeName === "ProfileTab") {
+          iconName = "female";
+        }
+        return (
+          <Icon
+            name={iconName}
+            style={{ color: tintColor }}
+            type="FontAwesome"
+          />
+        );
+      }
+    }),
     tabBarOptions: {
-      labelStyle: {
-        backgroundColor: "transparent"
-      },
+      showLabel: false,
       activeTintColor: "#6200EE",
       inactiveTintColor: "#858585",
       style: {
-        backgroundColor: "#ffffff00"
+        backgroundColor: "white"
       },
       labelStyle: {
-        fontSize: 14
+        fontSize: 12
       }
     }
   }

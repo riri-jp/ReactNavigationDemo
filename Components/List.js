@@ -7,19 +7,18 @@ import {
   Container,
   Content,
   Header,
+  Icon,
   List,
   ListItem,
   Text,
   View
 } from "native-base";
 
-import data from "../icecreamData";
 import styles from "../styles";
 
 class ListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: "IceCream List",
       headerRight: (
         <Button transparent light onPress={() => navigation.navigate("Modal")}>
           <Text style={styles.buttonTextStyling}>INFO</Text>
@@ -28,17 +27,18 @@ class ListScreen extends React.Component {
     };
   };
   render() {
-    let icecreamFlavors = data.map(icecreamFlavor => (
+    let flavorList = this.props.flavorList;
+    let flavors = flavorList.map(flavor => (
       <ListItem
-        key={icecreamFlavor.flavorName}
+        key={flavor.flavorName}
         onPress={() =>
           this.props.navigation.navigate("Detail", {
-            flavor: icecreamFlavor,
+            flavor: flavor,
             tabBarVisible: true
           })
         }
       >
-        <Text style={styles.flavorList}>{icecreamFlavor.flavorName}</Text>
+        <Text style={styles.flavorList}>{flavor.flavorName}</Text>
       </ListItem>
     ));
 
@@ -46,7 +46,7 @@ class ListScreen extends React.Component {
       <Container>
         <Content>
           <View>
-            <List>{icecreamFlavors}</List>
+            <List>{flavors}</List>
           </View>
         </Content>
       </Container>

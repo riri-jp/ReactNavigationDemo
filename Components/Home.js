@@ -32,7 +32,7 @@ class HomeScreen extends Component {
       >
         <View style={styles.overlayContainer}>
           <View style={styles.topStyling}>
-            <Text style={styles.homeTitle}>THE ICECREAM GALLERY</Text>
+            <Text style={styles.homeTitle}>THE DESSERT GALLERY</Text>
             <Button
               transparent
               light
