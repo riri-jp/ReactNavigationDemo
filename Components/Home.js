@@ -23,9 +23,9 @@ class HomeScreen extends Component {
               transparent
               light
               style={styles.buttonStyling}
-              onPress={() => this.props.navigation.navigate("BottomTab")}
+              onPress={() => this.props.navigation.navigate("List")}
             >
-              <Text style={styles.buttonTextStyling}>FLAVORS LIST</Text>
+              <Text style={styles.buttonTextStyling}>THE BAKERY'S MENU</Text>
             </Button>
           </View>
         </View>

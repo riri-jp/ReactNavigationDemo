@@ -7,8 +7,7 @@ import {
 } from "react-navigation";
 
 import HomeScreen from "../Home";
-import CakeListScreen from "../CakeList";
-import CookieListScreen from "../CookieList";
+import ListScreen from "../List";
 import DetailScreen from "../Detail";
 import ModalScreen from "../Modal";
 import ProfileScreen from "../Profile";
@@ -21,10 +20,67 @@ import cakeData from "../../cakeData";
 import * as actionCreators from "../../store/actions/dessertsActions";
 import { connect } from "react-redux";
 
+const HomeTab = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+      navigationOptions: {
+        header: null
+      }
+    }
+  },
+  {
+    navigationOptions: {
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "#90d4ed"
+      },
+      headerTextStyle: {
+        fontWeight: "bold"
+      },
+      hideTabBar: true
+    }
+  }
+);
+
+const ProfileTab = createStackNavigator({
+  Profile: ProfileScreen
+});
+
+const IcecreamTab = createStackNavigator(
+  {
+    List: {
+      screen: props => <ListScreen {...props} dessertType={"icecream"} />,
+      navigationOptions: {
+        headerTitle: "Icecream List"
+      }
+    },
+    Detail: {
+      screen: DetailScreen
+    },
+    Modal: {
+      screen: ModalScreen,
+      mode: "modal"
+    }
+  },
+  {
+    initialRouteName: "List",
+    navigationOptions: {
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "#90d4ed"
+      },
+      headerTextStyle: {
+        fontWeight: "bold"
+      }
+    }
+  }
+);
+
 const CakeTab = createStackNavigator(
   {
     List: {
-      screen: CakeListScreen,
+      screen: props => <ListScreen {...props} dessertType={"cake"} />,
       navigationOptions: {
         headerTitle: "Cake List"
       }
@@ -54,7 +110,7 @@ const CakeTab = createStackNavigator(
 const CookieTab = createStackNavigator(
   {
     List: {
-      screen: CookieListScreen,
+      screen: props => <ListScreen {...props} dessertType={"cookie"} />,
       navigationOptions: {
         headerTitle: "Cookie List"
       }
@@ -82,52 +138,34 @@ const CookieTab = createStackNavigator(
   }
 );
 
-const ProfileTab = createStackNavigator(
-  {
-    Profile: ProfileScreen
-  },
-  {
-    initialRouteName: "Profile",
-    navigationOptions: {
-      headerTitle: "Profile",
-      headerTintColor: "white",
-      headerStyle: {
-        backgroundColor: "#90d4ed"
-      },
-      headerTextStyle: {
-        fontWeight: "bold"
-      }
-    }
-  }
-);
-
 const BottomTab = createBottomTabNavigator(
   {
+    IcecreamTab: IcecreamTab,
     CookieTab: CookieTab,
     CakeTab: CakeTab,
     ProfileTab: ProfileTab
   },
   {
-    initialRouteName: "CookieTab",
+    initialRouteName: "ProfileTab",
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === "HomeTab") {
-          iconName = "home";
+        if (routeName === "IcecreamTab") {
+          iconName = "ios-ice-cream";
+          iconType = "Ionicons";
         } else if (routeName === "CakeTab") {
           iconName = "birthday-cake";
+          iconType = "FontAwesome";
         } else if (routeName === "CookieTab") {
-          iconName = "certificate";
+          iconName = "cookie";
+          iconType = "MaterialCommunityIcons";
         } else if (routeName === "ProfileTab") {
           iconName = "female";
+          iconType = "FontAwesome";
         }
         return (
-          <Icon
-            name={iconName}
-            style={{ color: tintColor }}
-            type="FontAwesome"
-          />
+          <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
         );
       }
     }),
@@ -145,9 +183,9 @@ const BottomTab = createBottomTabNavigator(
   }
 );
 
-const MainStack = createStackNavigator(
+const MainNav = createStackNavigator(
   {
-    Home: HomeScreen,
+    HomeScreen: HomeTab,
     BottomTab: BottomTab
   },
   {
@@ -157,4 +195,4 @@ const MainStack = createStackNavigator(
   }
 );
 
-export default MainStack;
+export default MainNav;
