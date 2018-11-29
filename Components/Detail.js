@@ -27,7 +27,6 @@ class DetailsScreen extends Component {
                     }}
                     style={styles.icecreamImage}
                   />
-                  <Text>FLAVOR: {flavor.flavorName}</Text>
                 </Body>
               </CardItem>
             </Card>

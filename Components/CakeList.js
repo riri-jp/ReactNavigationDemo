@@ -16,6 +16,11 @@ import {
 
 import styles from "../styles";
 
+import flavorList from "../cakeData";
+
+import { connect } from "react-redux";
+import * as actionCreators from "../store/actions/index";
+
 class ListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -26,8 +31,8 @@ class ListScreen extends React.Component {
       )
     };
   };
+
   render() {
-    let flavorList = this.props.flavorList;
     let flavors = flavorList.map(flavor => (
       <ListItem
         key={flavor.flavorName}
@@ -54,4 +59,20 @@ class ListScreen extends React.Component {
   }
 }
 
-export default ListScreen;
+const mapStateToProps = state => {
+  return {
+    dessertList: state.dessertList
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCakeList: () => dispatch(actionCreators.getCakeList()),
+    fetchCookieList: () => dispatch(actionCreators.getCookieList())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListScreen);

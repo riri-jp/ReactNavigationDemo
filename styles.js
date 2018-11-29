@@ -75,6 +75,17 @@ const styles = StyleSheet.create({
     color: "white",
     fontStyle: "italic",
     fontFamily: "Baskerville"
+  },
+  profileimage: {
+    height: 75,
+    width: 150,
+    flex: 0.5,
+    marginBottom: 10
+  },
+  profiletext: {
+    textAlign: "left",
+    color: "#6C788E",
+    fontSize: 16
   }
 });
 

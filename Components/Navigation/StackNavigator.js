@@ -3,7 +3,7 @@ import React from "react";
 import { createStackNavigator } from "react-navigation";
 
 import HomeScreen from "../Home";
-import ListScreen from "../List";
+import CakeListScreen from "../CakeList";
 import DetailScreen from "../Detail";
 import ModalScreen from "../Modal";
 import TabNav from "./BottomNavigator";
@@ -19,7 +19,7 @@ const StackNavigator = createStackNavigator(
       }
     },
     List: {
-      screen: props => <ListScreen {...props} flavorList={icecreamData} />
+      screen: CakeListScreen
     },
     Detail: DetailScreen,
     Modal: {

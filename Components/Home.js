@@ -7,20 +7,6 @@ import { Button } from "native-base";
 import styles from "../styles";
 
 class HomeScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0
-    };
-  }
-  componentDidMount() {
-    this.props.navigation.setParams({ increaseCount: this._increaseCount });
-  }
-
-  _increaseCount = () => {
-    this.setState({ count: this.state.count + 1 });
-  };
-
   render() {
     return (
       <ImageBackground
@@ -32,26 +18,15 @@ class HomeScreen extends Component {
       >
         <View style={styles.overlayContainer}>
           <View style={styles.topStyling}>
-            <Text style={styles.homeTitle}>THE DESSERT GALLERY</Text>
+            <Text style={styles.homeTitle}>THE BAKERY</Text>
             <Button
               transparent
               light
               style={styles.buttonStyling}
-              onPress={() => this.props.navigation.navigate("List")}
+              onPress={() => this.props.navigation.navigate("BottomTab")}
             >
               <Text style={styles.buttonTextStyling}>FLAVORS LIST</Text>
             </Button>
-            <Button
-              transparent
-              light
-              style={styles.buttonStyling}
-              onPress={() => this.props.navigation.setParams({ name: "Lailz" })}
-            >
-              <Text style={styles.buttonTextStyling}>
-                Set title name to 'Lailz'
-              </Text>
-            </Button>
-            <Text style={styles.buttonTextStyling}>{this.state.count}</Text>
           </View>
         </View>
       </ImageBackground>

@@ -1,1 +1,3 @@
+export const GET_CAKE_LIST = "GET_CAKE_LIST";
+export const GET_COOKIE_LIST = "GET_COOKIE_LIST";
 export const GET_ICECREAM_LIST = "GET_ICECREAM_LIST";
