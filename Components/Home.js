@@ -7,6 +7,37 @@ import { Button } from "native-base";
 import styles from "../styles";
 
 class HomeScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    let increaseCount = navigation.getParam("increaseCount");
+    return {
+      title: navigation.getParam("name"),
+      headerStyle: {
+        backgroundColor: "#ffd1dc"
+      },
+      headerRight: (
+        <Button transparent light onPress={increaseCount}>
+          <Text>COUNT</Text>
+        </Button>
+      )
+    };
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 5
+    };
+    this.increaseCount = this.increaseCount.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({ increaseCount: this.increaseCount });
+  }
+
+  increaseCount() {
+    let newCounter = this.state.counter + 1;
+    this.setState({ counter: newCounter });
+  }
+
   render() {
     return (
       <ImageBackground
@@ -23,10 +54,19 @@ class HomeScreen extends Component {
               transparent
               light
               style={styles.buttonStyling}
-              onPress={() => alert("IceCream List")}
+              onPress={() => this.props.navigation.navigate("ListScreen")}
             >
               <Text style={styles.buttonTextStyling}>FLAVORS LIST</Text>
             </Button>
+            <Button
+              transparent
+              light
+              style={styles.buttonStyling}
+              onPress={() => this.props.navigation.setParams({ name: "Lailz" })}
+            >
+              <Text style={styles.buttonTextStyling}>Change TITLE</Text>
+            </Button>
+            <Text style={styles.buttonTextStyling}>{this.state.counter}</Text>
           </View>
         </View>
       </ImageBackground>
