@@ -140,7 +140,7 @@ static navigationOptions = ({ navigation }) => {
 ```javascript
 {
   initialRouteName: "Home",
-  navigationOptions: {
+  defaultNavigationOptions: {
     headerTintColor: "white",
     headerStyle: {
       backgroundColor: "#90d4ed"
@@ -214,12 +214,9 @@ headerRight: <Button
 
 -------------
 
-constructor(props) {
-  super(props);
-  this.state = {
+state = {
     count: 0
   };
-}
 componentDidMount() {
   this.props.navigation.setParams({ increaseCount: this._increaseCount });
 }
