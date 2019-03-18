@@ -35,7 +35,19 @@ const RootStack = createStackNavigator(
 );
 ```
 
-3.  Go to List Screen:
+3. App Container:
+
+```javascript
+import {createAppContainer} from "react-navigation";
+
+...
+
+const AppContainer = createAppContainer(RootStack);
+export default AppContainer;
+
+```
+
+4.  Go to List Screen:
 
 ```javascript
 <Button
@@ -46,7 +58,7 @@ const RootStack = createStackNavigator(
 >
 ```
 
-4.  Go to Detail Screen (without parameters first):
+5.  Go to Detail Screen (without parameters first):
 
 ```javascript
 <ListItem
@@ -58,7 +70,7 @@ const RootStack = createStackNavigator(
 </ListItem>
 ```
 
-5.  Add parameters for Detail Navigation:
+6.  Add parameters for Detail Navigation:
 
 (List.js)
 
@@ -89,7 +101,7 @@ render() {
   <Text>FLAVOR: {flavor.flavorName}</Text>
 ```
 
-6.  Back Button
+7.  Back Button
 
 ```javascript
 <Button
@@ -99,7 +111,7 @@ render() {
 />
 ```
 
-7.  navigate vs push
+8.  navigate vs push
 
 ```javascript
 <Button
@@ -115,7 +127,7 @@ render() {
 />
 ```
 
-8.  Home & List Header Titles
+9.  Home & List Header Titles
 
 ```javascript
 class HomeScreen extends Component {
@@ -125,7 +137,7 @@ static navigationOptions = {
   ...
 ```
 
-9.  Detail Header Title
+10.  Detail Header Title
 
 ```javascript
 static navigationOptions = ({ navigation }) => {
@@ -135,12 +147,12 @@ static navigationOptions = ({ navigation }) => {
 };
 ```
 
-10. Header Styling
+11. Header Styling
 
 ```javascript
 {
   initialRouteName: "Home",
-  navigationOptions: {
+  defaultNavigationOptions: {
     headerTintColor: "white",
     headerStyle: {
       backgroundColor: "#90d4ed"
@@ -152,7 +164,7 @@ static navigationOptions = ({ navigation }) => {
 }
 ```
 
-11. Customized Header Style for Home Page
+12. Customized Header Style for Home Page
 
 ```javascript
 class HomeScreen extends Component {
@@ -164,7 +176,7 @@ static navigationOptions = {
 }
 ```
 
-12. Remove Header from Home Page
+13. Remove Header from Home Page
 
 ```javascript
 class HomeScreen extends Component {
@@ -173,7 +185,7 @@ class HomeScreen extends Component {
   };
 ```
 
-13. Add a button on the right side of the header
+14. Add a button on the right side of the header
 
 ```javascript
 static navigationOptions = {
@@ -184,7 +196,7 @@ static navigationOptions = {
 };
 ```
 
-14. Change title when pressing on the button:
+15. Change title when pressing on the button:
 
 ```javascript
 static navigationOptions = ({ navigation }) => {
@@ -201,7 +213,7 @@ static navigationOptions = ({ navigation }) => {
 </Button>
 ```
 
-15. Add a counter to the header:
+16. Add a counter to the header:
 
 ```javascript
 headerRight: <Button
@@ -214,12 +226,9 @@ headerRight: <Button
 
 -------------
 
-constructor(props) {
-  super(props);
-  this.state = {
+state = {
     count: 0
   };
-}
 componentDidMount() {
   this.props.navigation.setParams({ increaseCount: this._increaseCount });
 }
