@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 
 import HomeScreen from "./Components/Home";
 import ListScreen from "./Components/List";
