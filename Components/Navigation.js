@@ -1,4 +1,4 @@
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import Home from "./Home";
 import List from "./List";
@@ -17,7 +17,9 @@ const MyStack = createStackNavigator(
   },
   {
     initialRouteName: "HomeScreen",
-    navigationOptions: {
+
+    defaultNavigationOptions: {
+      // headerTransparent: true,
       headerTintColor: "white",
       headerStyle: {
         backgroundColor: "#90d4ed"
@@ -29,4 +31,6 @@ const MyStack = createStackNavigator(
   }
 );
 
-export default MyStack;
+const MyContainer = createAppContainer(MyStack);
+
+export default MyContainer;

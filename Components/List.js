@@ -24,15 +24,16 @@ class ListScreen extends React.Component {
     )
   };
   render() {
-    let icecreamFlavors = data.map(flavorScoop => (
+    let icecreamFlavors = data.map(flavor => (
       <ListItem
+        key={flavor.id}
         onPress={() =>
           this.props.navigation.navigate("DetailScreen", {
-            flavor: flavorScoop
+            flavor: flavor
           })
         }
       >
-        <Text style={styles.flavorList}>{flavorScoop.flavorName}</Text>
+        <Text style={styles.flavorList}>{flavor.flavorName}</Text>
       </ListItem>
     ));
 
