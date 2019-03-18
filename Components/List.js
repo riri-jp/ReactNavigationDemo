@@ -18,9 +18,9 @@ import styles from "../styles";
 
 class ListScreen extends React.Component {
   render() {
-    let icecreamFlavors = data.map(flavorScoop => (
-      <ListItem onPress={() => alert("IceCream Details")}>
-        <Text style={styles.flavorList}>{flavorScoop.flavorName}</Text>
+    let icecreamFlavors = data.map(flavor => (
+      <ListItem key={flavor.id} onPress={() => alert("IceCream Details")}>
+        <Text style={styles.flavorList}>{flavor.flavorName}</Text>
       </ListItem>
     ));
 
