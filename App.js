@@ -1,11 +1,9 @@
 import React from "react";
 
-import HomeScreen from "./Components/Home";
-import ListScreen from "./Components/List";
-import DetailScreen from "./Components/Detail";
+import AppContainer from "./Navigation";
 
 export default class App extends React.Component {
   render() {
-    return <HomeScreen />;
+    return <AppContainer />;
   }
 }

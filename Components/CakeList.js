@@ -1,25 +1,34 @@
 import React from "react";
 import {
   Body,
+  Button,
   Card,
   CardItem,
   Container,
   Content,
   Header,
+  Icon,
   List,
   ListItem,
   Text,
   View
 } from "native-base";
-import { Button } from "react-native";
 
-import data from "../data";
 import styles from "../styles";
 
-class ListScreen extends React.Component {
+import flavorList from "../cakeData";
+
+class CakeList extends React.Component {
   render() {
-    let icecreamFlavors = data.map(flavor => (
-      <ListItem key={flavor.id} onPress={() => alert("IceCream Details")}>
+    let flavors = flavorList.map(flavor => (
+      <ListItem
+        key={flavor.flavorName}
+        onPress={() =>
+          this.props.navigation.navigate("CakeDetail", {
+            flavor: flavor
+          })
+        }
+      >
         <Text style={styles.flavorList}>{flavor.flavorName}</Text>
       </ListItem>
     ));
@@ -28,7 +37,7 @@ class ListScreen extends React.Component {
       <Container>
         <Content>
           <View>
-            <List>{icecreamFlavors}</List>
+            <List>{flavors}</List>
           </View>
         </Content>
       </Container>
@@ -36,4 +45,4 @@ class ListScreen extends React.Component {
   }
 }
 
-export default ListScreen;
+export default CakeList;
