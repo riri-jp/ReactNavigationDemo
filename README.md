@@ -241,3 +241,4 @@ _increaseCount = () => {
 
 <Text style={styles.buttonTextStyling}>{this.state.count}</Text>
 ```
+# ReactNavigation
